@@ -4,6 +4,7 @@ import { redirect } from "next/navigation";
 import { LayoutDashboard } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
 import { TitleForm } from "@/app/(dashboard)/(routes)/teacher/courses/[courseId]/_components/title-form";
+import { DescriptionForm } from "@/app/(dashboard)/(routes)/teacher/courses/[courseId]/_components/description-form";
 
 export default async function CourseIdPage({ params }: { params: { courseId: string } }) {
     const { userId } = auth();
@@ -55,6 +56,10 @@ export default async function CourseIdPage({ params }: { params: { courseId: str
                         <h2 className="text-xl">Customize your course</h2>
                     </div>
                     <TitleForm
+                        initialData={course}
+                        courseId={course.id}
+                    />
+                    <DescriptionForm
                         initialData={course}
                         courseId={course.id}
                     />
