@@ -5,6 +5,7 @@ import { LayoutDashboard } from "lucide-react";
 import { IconBadge } from "@/components/icon-badge";
 import { TitleForm } from "@/app/(dashboard)/(routes)/teacher/courses/[courseId]/_components/title-form";
 import { DescriptionForm } from "@/app/(dashboard)/(routes)/teacher/courses/[courseId]/_components/description-form";
+import { ImageForm } from "@/app/(dashboard)/(routes)/teacher/courses/[courseId]/_components/image-form";
 
 export default async function CourseIdPage({ params }: { params: { courseId: string } }) {
     const { userId } = auth();
@@ -60,6 +61,11 @@ export default async function CourseIdPage({ params }: { params: { courseId: str
                         courseId={course.id}
                     />
                     <DescriptionForm
+                        initialData={course}
+                        courseId={course.id}
+                    />
+
+                    <ImageForm
                         initialData={course}
                         courseId={course.id}
                     />

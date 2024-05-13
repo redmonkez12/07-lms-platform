@@ -13,17 +13,16 @@ import { Button } from "@/components/ui/button";
 import { Form, FormControl, FormField, FormItem, FormMessage } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { cn } from "@/lib/utils";
+import { Course } from "@prisma/client";
 
 type DescriptionFormProps = {
-    initialData: {
-        description: string;
-    };
+    initialData: Course;
     courseId: string;
 };
 
 const formSchema = z.object({
     description: z.string().min(1, {
-        message: "Description is required",
+        message: "Image is required",
     }),
 });
 
@@ -35,7 +34,9 @@ export function DescriptionForm({ initialData, courseId }: DescriptionFormProps)
 
     const form = useForm<z.infer<typeof formSchema>>({
         resolver: zodResolver(formSchema),
-        defaultValues: initialData,
+        defaultValues: {
+            description: initialData?.description || "",
+        },
     });
 
     const { isSubmitting, isValid } = form.formState;

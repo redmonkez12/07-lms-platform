@@ -12,6 +12,8 @@ export async function PATCH(req: Request, { params }: { params: { courseId: stri
             return new NextResponse("Unauthorized", { status: 401 });
         }
 
+        console.log(values, "fucker");
+
         const course = await db.course.update({
             where: {
                 id: courseId,
